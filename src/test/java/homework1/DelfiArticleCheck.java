@@ -4,6 +4,7 @@ import Pages.BaseFunc;
 import Pages.HomePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
@@ -17,7 +18,7 @@ public class DelfiArticleCheck {
     private static final Logger LOGGER = LogManager.getLogger(DelfiArticleCheck.class);
 
     @Test
-    public void getArticle(){
+    public void getArticle() {
 
 
         // Open main page on Web version
@@ -52,15 +53,15 @@ public class DelfiArticleCheck {
         //If we don't find matches for TITLE variable create message "Element not found"
         LOGGER.info("If we do not find our article than message will be created");
         assertTrue("No article found", isTitlePresent);
-        //Close browser window
-        baseFunc.driver.quit();
-        LOGGER.info("Closing our browser");
-
 
 
     }
 
 
-
+    @After
+    public void quitBrowser() {
+        baseFunc.driver.quit();
+        LOGGER.info("Closing our browser");
+    }
 
 }
